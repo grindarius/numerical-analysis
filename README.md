@@ -5,5 +5,5 @@
  ## installation
  ```
  npm install
- npm run dev /* start nodemon server */
+ npm run dev
  ```
