@@ -1,0 +1,25 @@
+{
+  "name": "numerical-analysis",
+  "version": "1.0.0",
+  "description": "a program to do some calculations with Numerical Analysis",
+  "main": "index.js",
+  "scripts": {
+    "serve": "node index.js",
+    "dev": "nodemon index.js --watch public --watch routes --watch views",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "grindarius",
+  "license": "ISC",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.1",
+    "@types/mathjs": "^6.0.9",
+    "body-parser": "^1.19.0",
+    "bulma": "^0.9.1",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "mathjs": "^8.1.0"
+  },
+  "devDependencies": {
+    "node-sass": "^5.0.0"
+  }
+}

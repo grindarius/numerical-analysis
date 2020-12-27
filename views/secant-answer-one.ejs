@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secant Answer</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/bulma.css">
+    <script defer src="/js/all.js"></script> <!-- This is loading font awesome-->
+</head>
+
+<body>
+    <section class="section">
+        <a href="/secant"><i class="fa fa-arrow-alt-circle-left fa-4x"></i></a>
+        <table class="table is-fullwidth is-bordered">
+            <thead>
+                <tr>
+                    <th>i</th>
+                    <th>a</th>
+                    <th>b</th>
+                    <th>f(a)</th>
+                    <th>f(b)</th>
+                    <th>c</th>
+                    <th>f(c)</th>
+                    <th>Tolerance</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <%  answer.forEach(ans => {  %>
+                    <tr>
+                        <th><%= ans.i %></th>
+                        <td><%= ans.a %></td>
+                        <td><%= ans.b %></td>
+                        <td><%= ans.fa %></td>
+                        <td><%= ans.fb %></td>
+                        <td><%= ans.c %></td>
+                        <td><%= ans.fc %></td>
+                        <td><%= ans.tolerance %>%</td>
+                    </tr>
+                <%  })  %>
+            </tfoot>
+        </table>
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>False Position</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/bulma.css">
+    <script defer src="/js/all.js"></script> <!-- This is loading font awesome-->
+    <script src="/javascripts/script.js"></script>
+</head>
+
+<body>
+    <section class="section">
+        <div class="container">
+            <a href="/"><i class="fa fa-arrow-alt-circle-left fa-4x"></i></a>
+            <h1 class="title is-1">Method of False Position</h1>
+            <form action="/false-position/answer" method="POST">
+            
+                <div class="field">
+                    <label for="expression" class="label">Expression</label>
+                    <div class="control">
+                        <input type="text" name="expression" class="input is-primary" placeholder="e.g. x^2 + 2x - 5" required>
+                    </div>
+                </div>
+            
+                <div class="field">
+                    <label for="start" class="label">Find any root between</label>
+                    <div class="control">
+                        <input type="number" name="start" class="input is-primary" step=".01" required>
+                    </div>
+                </div>
+            
+                <div class="field">
+                    <label for="end" class="label">and</label>
+                    <div class="control">
+                        <input type="number" name="end" class="input is-primary" step=".01" required>
+                    </div>
+                </div>
+            
+                <div class="field">
+                    <label for="decimalPoints" class="label">Decimal Points (0 is no decimal points limited)</label>
+                    <div class="control">
+                        <input type="number" name="decimalPoints" class="input is-primary" min="0" required>
+                    </div>
+                </div>
+            
+                <div class="field">
+                    <div class="control">
+                        <label class="radio">
+                            <input type="radio" name="findUsing" onclick="showIteration()" value="time">
+                            Find the root using iteration times
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="findUsing" onclick="showTolerance()" value="tole">
+                            Find the root using tolerance
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="findUsing" onclick="resetIterationToleranceView()" value="until" disabled>
+                            Find the root until the root equals zero
+                        </label>
+                    </div>
+                </div>
+            
+                <div class="field" id="iteration">
+                    <label for="iteration" class="label">Iteration times</label>
+                    <input type="number" name="iteration" class="input is-primary" min="1">
+                </div>
+            
+                <div class="field" id="tolerance">
+                    <label for="tolerance" class="label">Tolerance</label>
+                    <input type="number" name="tolerance" class="input is-primary" min="0" step=".01">
+                </div>
+                
+                <div class="field is-grouped">
+                    <div class="control">
+                        <button type="submit" class="button is-link">Submit</button>
+                    </div>
+                    <div class="control">
+                        <button type="reset" onclick="resetIterationToleranceView()" class="button is-link is-light">Reset</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</body>
+
+</html>
