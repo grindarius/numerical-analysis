@@ -4,6 +4,13 @@
  
  ## installation
  ```
+ npm install -g nodemon
  npm install
  npm run dev
+ ```
+ 
+ ## or
+ ```
+ npm install
+ npm run serve
  ```
