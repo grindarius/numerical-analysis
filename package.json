@@ -10,9 +10,12 @@
   },
   "author": "grindarius",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/grindarius/numerical-analysis"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.1",
-    "@types/mathjs": "^6.0.9",
     "body-parser": "^1.19.0",
     "bulma": "^0.9.1",
     "ejs": "^3.1.5",

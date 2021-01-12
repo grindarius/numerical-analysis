@@ -1,7 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
-const { falsePositionIteration, falsePositionTolerance, falsePositionZero } = require('../public/javascripts/falsePosition')
+const { falsePositionIteration, falsePositionTolerance, falsePositionZero } = require('../public/javascripts/false-position')
 
 const router = express.Router()
 

@@ -1,8 +1,8 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
-const { secantOneIteration, secantOneTolerance, secantOneZero } = require('../public/javascripts/secantTypeOne')
-const { secantTwoIteration, secantTwoTolerance, secantTwoZero } = require('../public/javascripts/secantTypeTwo')
+const { secantOneIteration, secantOneTolerance, secantOneZero } = require('../public/javascripts/secant-type-one')
+const { secantTwoIteration, secantTwoTolerance, secantTwoZero } = require('../public/javascripts/secant-type-two')
 
 const router = express.Router()
 

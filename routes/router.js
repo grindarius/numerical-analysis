@@ -1,11 +1,11 @@
 const express = require('express')
 const path = require('path')
 
-const bisectionRouter = require('./bisectionRouter')
-const falsePositionRouter = require('./falsePositionRouter')
-const fixedPointRouter = require('./fixedPointRouter')
-const secantRouter = require('./secantRouter')
-const newtonRalphsonRouter = require('./newtonRalphsonRouter')
+const bisectionRouter = require('./bisection-router')
+const falsePositionRouter = require('./false-position-router')
+const fixedPointRouter = require('./fixed-point-router')
+const secantRouter = require('./secant-router')
+const newtonRalphsonRouter = require('./newton-ralphson-router')
 
 const router = express.Router()
 

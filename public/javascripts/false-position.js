@@ -1,17 +1,19 @@
-const { evaluateFunction, absoluteError, round } = require('./helperFunction')
+const { evaluateFunction, absoluteError, round } = require('./helper-function')
 
-const secantOneIteration = (expression, a, b, iteration, decimalPoints, previousC = 0) => {
+const falsePositionIteration = (expression, a, b, iteration, decimalPoints, previousC = 0) => {
     let answerArray = []
-    
-    for (let i = 1; i <= iteration; i++) {
-        console.log(`iteration number ${i}`)
 
-        // * find f(a) f(b)
+    for (let i = 0; i < iteration; i++) {
+        console.log(`iteration number ${i + 1}`)
+
+        // * find f(a), f(b)
         const fa = round(evaluateFunction(expression, a), decimalPoints)
         const fb = round(evaluateFunction(expression, b), decimalPoints)
 
-        // * find c, f(c)
-        const c = round(b - ((fb * (b - a)) / (fb - fa)), decimalPoints)
+        // * find c
+        const c = round(((a * fb) - (b * fa)) / (fb - fa), decimalPoints)
+
+        // * find f(c)
         const fc = round(evaluateFunction(expression, c), decimalPoints)
 
         // * find tolerance
@@ -19,7 +21,7 @@ const secantOneIteration = (expression, a, b, iteration, decimalPoints, previous
 
         let answerObject = {}
 
-        answerObject.i = i
+        answerObject.i = i + 1
         answerObject.a = a
         answerObject.b = b
         answerObject.c = c
@@ -39,29 +41,35 @@ const secantOneIteration = (expression, a, b, iteration, decimalPoints, previous
         console.log(`tolerance = ${tolerance}%`)
         console.log('\n---------------------------------\n')
 
-        // * a becomes b, and b becomes c
-        a = b
-        b = c
+        // * compare f(a) * f(c)
+        if (fa * fc < 0) {
+            b = c
+        } else if (fa * fc > 0) {
+            a = c
+        }
+
         previousC = c
     }
 
-    return answerArray
+    return answerArray 
 }
 
-const secantOneTolerance = (expression, a, b, setTolerance, decimalPoints, previousC = 0) => {
+const falsePositionTolerance = (expression, a, b, setTolerance, decimalPoints, previousC = 0) => {
     let answerArray = []
-    let i = 1
+    let i = 0
     let tolerance = 100
 
     do {
-        console.log(`iteration number ${i}`)
+        console.log(`iteration number ${i + 1}`)
 
-        // * find f(a) f(b)
+        // * find f(a), f(b)
         const fa = round(evaluateFunction(expression, a), decimalPoints)
         const fb = round(evaluateFunction(expression, b), decimalPoints)
 
-        // * find c, f(c)
-        const c = round(b - ((fb * (b - a)) / (fb - fa)), decimalPoints)
+        // * find c
+        const c = round(((a * fb) - (b * fa)) / (fb - fa), decimalPoints)
+
+        // * find f(c)
         const fc = round(evaluateFunction(expression, c), decimalPoints)
 
         // * find tolerance
@@ -69,7 +77,7 @@ const secantOneTolerance = (expression, a, b, setTolerance, decimalPoints, previ
 
         let answerObject = {}
 
-        answerObject.i = i
+        answerObject.i = i + 1
         answerObject.a = a
         answerObject.b = b
         answerObject.c = c
@@ -89,38 +97,44 @@ const secantOneTolerance = (expression, a, b, setTolerance, decimalPoints, previ
         console.log(`tolerance = ${tolerance}%`)
         console.log('\n---------------------------------\n')
 
-        // * a becomes b, and b becomes c
+        // * compare f(a) * f(c)
+        if (fa * fc < 0) {
+            b = c
+        } else if (fa * fc > 0) {
+            a = c
+        }
+
         i += 1
-        a = b
-        b = c
         previousC = c
     } while (!(tolerance < setTolerance))
 
     return answerArray
 }
 
-const secantOneZero = (expression, a, b, decimalPoints, previousC = 0) => {
+const falsePositionZero = (expression, a, b, decimalPoints, previousC = 0) => {
     let answerArray = []
-    let i = 1
-    let fc = 0
+    let i = 0
+    let fc
 
     do {
-        console.log(`iteration number ${i}`)
+        console.log(`iteration number ${i + 1}`)
 
-        // * find f(a) f(b)
+        // * find f(a), f(b)
         const fa = round(evaluateFunction(expression, a), decimalPoints)
         const fb = round(evaluateFunction(expression, b), decimalPoints)
 
-        // * find c, f(c)
-        const c = round(b - ((fb * (b - a)) / (fb - fa)), decimalPoints)
-        fc = round(evaluateFunction(expression, c), decimalPoints)
+        // * find c
+        const c = round(((a * fb) - (b * fa)) / (fb - fa), decimalPoints)
+
+        // * find f(c)
+        const fc = round(evaluateFunction(expression, c), decimalPoints)
 
         // * find tolerance
-        tolerance = round(absoluteError(c, previousC), decimalPoints)
+        const tolerance = round(absoluteError(c, previousC), decimalPoints)
 
         let answerObject = {}
 
-        answerObject.i = i
+        answerObject.i = i + 1
         answerObject.a = a
         answerObject.b = b
         answerObject.c = c
@@ -140,12 +154,18 @@ const secantOneZero = (expression, a, b, decimalPoints, previousC = 0) => {
         console.log(`tolerance = ${tolerance}%`)
         console.log('\n---------------------------------\n')
 
-        // * a becomes b, and b becomes c
+        // * compare f(a) * f(c)
+        if (fa * fc < 0) {
+            b = c
+        } else if (fa * fc > 0) {
+            a = c
+        }
+
         i += 1
-        a = b
-        b = c
         previousC = c
     } while (fc !== 0)
+
+    return answerArray
 }
 
-module.exports = { secantOneIteration, secantOneTolerance, secantOneZero }
+module.exports = { falsePositionIteration, falsePositionTolerance, falsePositionZero }

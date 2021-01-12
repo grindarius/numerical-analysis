@@ -1,4 +1,4 @@
-const { evaluateFunction, absoluteError, round } = require('./helperFunction')
+const { evaluateFunction, absoluteError, round } = require('./helper-function')
 
 const bisectionIteration = (expression, a, b, iteration, decimalPoints, previousC = 0) => {
     let answerArray = []
