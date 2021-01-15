@@ -1,4 +1,4 @@
-const { evaluateFunction, absoluteError, round } = require('./helper-function')
+const { evaluateFunction, absoluteError, round } = require('./helper-functions')
 
 const secantOneIteration = (expression, a, b, iteration, decimalPoints, previousC = 0) => {
     let answerArray = []

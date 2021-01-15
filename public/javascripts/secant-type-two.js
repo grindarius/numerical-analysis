@@ -1,5 +1,4 @@
-const { evaluate } = require('mathjs')
-const { evaluateFunction, absoluteError, round } = require('./helper-function')
+const { evaluateFunction, absoluteError, round } = require('./helper-functions')
 
 const secantTwoIteration = (expression, a, b, iteration, decimalPoints, previousC = 0) => {
     let answerArray = []
