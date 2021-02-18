@@ -1,4 +1,5 @@
-# numerical-analysis
+# Deprecated
+ this repository is being managed here
  
  an application to calculate numerical analysis examples
  
