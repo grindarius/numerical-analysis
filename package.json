@@ -23,6 +23,6 @@
     "mathjs": "^8.1.0"
   },
   "devDependencies": {
-    "node-sass": "^5.0.0"
+    "node-sass": "^8.0.0"
   }
 }
